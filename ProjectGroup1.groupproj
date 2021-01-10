@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{5EE821EA-9395-4E36-83A9-26097A43CFCD}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="PBD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="C:\КАФЕДРА\СШ\Программа по СППР ММК\MMK_DSS.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="PBD">
+        <MSBuild Projects="PBD.dproj"/>
+    </Target>
+    <Target Name="PBD:Clean">
+        <MSBuild Projects="PBD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PBD:Make">
+        <MSBuild Projects="PBD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MMK_DSS">
+        <MSBuild Projects="C:\КАФЕДРА\СШ\Программа по СППР ММК\MMK_DSS.dproj"/>
+    </Target>
+    <Target Name="MMK_DSS:Clean">
+        <MSBuild Projects="C:\КАФЕДРА\СШ\Программа по СППР ММК\MMK_DSS.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MMK_DSS:Make">
+        <MSBuild Projects="C:\КАФЕДРА\СШ\Программа по СППР ММК\MMK_DSS.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="PBD;MMK_DSS"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="PBD:Clean;MMK_DSS:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="PBD:Make;MMK_DSS:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
